@@ -7,7 +7,10 @@ function getComputerChoice() {
 function getPlayerChoice() {
   const choices = ['rock', 'paper', 'scissors']
   while (true) {
-    const choice = prompt('Rock, paper or scissors?').toLowerCase()
+    let choice = prompt('Rock, paper or scissors?')
+    if (choice) {
+      choice = choice.toLowerCase()
+    }
     if (choices.includes(choice)) {
       return choice
     } else {
