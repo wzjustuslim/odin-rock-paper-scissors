@@ -84,3 +84,5 @@ function playGame() {
 
   alert('You somehow broke this game! =(')
 }
+
+playGame()
