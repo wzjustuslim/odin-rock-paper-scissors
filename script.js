@@ -1,10 +1,6 @@
-let computerSelection = ''
-let playerSelection = ''
-
 function getComputerChoice() {
   const choices = ['rock', 'paper', 'scissors']
   const rng = Math.floor(Math.random() * 3)
-  computerSelection = choices[rng]
   return choices[rng]
 }
 
@@ -13,7 +9,6 @@ function getPlayerChoice() {
   while (true) {
     const choice = prompt('Rock, paper or scissors?').toLowerCase()
     if (choices.includes(choice)) {
-      playerSelection = choice
       return choice
     } else {
       alert('Please make a valid choice!')
@@ -84,5 +79,8 @@ function playGame() {
   if (playerScore > computerScore) {
     console.log(`You Win the game! Your score: ${playerScore} : ${computerScore} `)
     console.log('Scoreboard: ', scores)
+    return
   }
+
+  alert('You somehow broke this game! =(')
 }
