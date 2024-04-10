@@ -10,6 +10,20 @@ function capitalize(string) {
   return string[0].toUpperCase() + string.slice(1)
 }
 
+function checkScore(scores) {
+  const playerScore = scores.filter(score => score === 'player').length
+  const computerScore = scores.filter(score => score === 'computer').length
+  const display = document.getElementById('display')
+
+  if (playerScore === 5) {
+    display.textContent = `You Win the game! Your score: ${playerScore} : ${computerScore}`
+  }
+  if (computerScore === 5) {
+    display.textContent = `You Lose the game! Your score: ${playerScore} : ${computerScore}`
+  }
+  display.textContent = `Your score: ${ playerScore } : ${ computerScore }`
+}
+
 function playRound(playerSelection, computerSelection) {
   const log = document.getElementById('log')
   if (playerSelection === computerSelection) {
