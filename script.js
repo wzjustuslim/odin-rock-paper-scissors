@@ -29,6 +29,7 @@ function playRound(playerSelection, computerSelection) {
   if (playerSelection === computerSelection) {
     log.textContent = "It's a tie!"
     scoreboard.push('tie')
+    checkScore(scoreboard)
     return
   }
 
@@ -37,6 +38,7 @@ function playRound(playerSelection, computerSelection) {
       if (computerSelection === 'paper') {
         log.textContent = "You Lose! Paper beats Rock"
         scoreboard.push('computer')
+        checkScore(scoreboard)
         return
       }
       break;
@@ -45,6 +47,7 @@ function playRound(playerSelection, computerSelection) {
       if (computerSelection === 'scissors') {
         log.textContent = "You Lose! Scissors beats Paper"
         scoreboard.push('computer')
+        checkScore(scoreboard)
         return
       }
       break;
@@ -53,6 +56,7 @@ function playRound(playerSelection, computerSelection) {
       if (computerSelection === 'rock') {
         log.textContent = "You Lose! Rock beats Scissors"
         scoreboard.push('computer')
+        checkScore(scoreboard)
         return
       }
       break;
@@ -63,6 +67,7 @@ function playRound(playerSelection, computerSelection) {
 
   log.textContent = `You Win! ${capitalize(playerSelection)} beats ${capitalize(computerSelection)}`
   scoreboard.push('player')
+  checkScore(scoreboard)
   return
 }
 
