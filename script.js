@@ -60,6 +60,7 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function playGame() {
+  // TODO: remove logic of 5 rounds
   const scores = ['', '', '', '', '']
 
   for (let i = 0; i < scores.length; i++) {
