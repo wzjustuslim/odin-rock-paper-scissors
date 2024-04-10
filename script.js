@@ -1,3 +1,5 @@
+const scoreboard = []
+
 function getComputerChoice() {
   const choices = ['rock', 'paper', 'scissors']
   const rng = Math.floor(Math.random() * 3)
@@ -12,28 +14,32 @@ function playRound(playerSelection, computerSelection) {
   const log = document.getElementById('log')
   if (playerSelection === computerSelection) {
     log.textContent = "It's a tie!"
-    return 'tie'
+    scoreboard.push('tie')
+    return
   }
 
   switch (playerSelection) {
     case 'rock':
       if (computerSelection === 'paper') {
         log.textContent = "You Lose! Paper beats Rock"
-        return 'computer'
+        scoreboard.push('computer')
+        return
       }
       break;
     
     case 'paper':
       if (computerSelection === 'scissors') {
         log.textContent = "You Lose! Scissors beats Paper"
-        return 'computer'
+        scoreboard.push('computer')
+        return
       }
       break;
     
     case 'scissors':
       if (computerSelection === 'rock') {
         log.textContent = "You Lose! Rock beats Scissors"
-        return 'computer'
+        scoreboard.push('computer')
+        return
       }
       break;
   
@@ -42,7 +48,8 @@ function playRound(playerSelection, computerSelection) {
   }
 
   log.textContent = `You Win! ${capitalize(playerSelection)} beats ${capitalize(computerSelection)}`
-  return 'player'
+  scoreboard.push('player')
+  return
 }
 
 const btnArray = Array.from(document.querySelectorAll('button'))
