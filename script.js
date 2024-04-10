@@ -17,9 +17,13 @@ function checkScore(scores) {
 
   if (playerScore === 5) {
     display.textContent = `You Win the game! Your score: ${playerScore} : ${computerScore}`
+    scoreboard.length = 0
+    return
   }
   if (computerScore === 5) {
     display.textContent = `You Lose the game! Your score: ${playerScore} : ${computerScore}`
+    scoreboard.length = 0
+    return
   }
   display.textContent = `Your score: ${ playerScore } : ${ computerScore }`
 }
@@ -27,7 +31,7 @@ function checkScore(scores) {
 function playRound(playerSelection, computerSelection) {
   const log = document.getElementById('log')
   if (playerSelection === computerSelection) {
-    log.textContent = "It's a tie!"
+    log.textContent = "It's a tie this round!"
     scoreboard.push('tie')
     checkScore(scoreboard)
     return
@@ -36,7 +40,7 @@ function playRound(playerSelection, computerSelection) {
   switch (playerSelection) {
     case 'rock':
       if (computerSelection === 'paper') {
-        log.textContent = "You Lose! Paper beats Rock"
+        log.textContent = "You Lose this round! Paper beats Rock"
         scoreboard.push('computer')
         checkScore(scoreboard)
         return
@@ -45,7 +49,7 @@ function playRound(playerSelection, computerSelection) {
     
     case 'paper':
       if (computerSelection === 'scissors') {
-        log.textContent = "You Lose! Scissors beats Paper"
+        log.textContent = "You Lose this round! Scissors beats Paper"
         scoreboard.push('computer')
         checkScore(scoreboard)
         return
@@ -54,7 +58,7 @@ function playRound(playerSelection, computerSelection) {
     
     case 'scissors':
       if (computerSelection === 'rock') {
-        log.textContent = "You Lose! Rock beats Scissors"
+        log.textContent = "You Lose this round! Rock beats Scissors"
         scoreboard.push('computer')
         checkScore(scoreboard)
         return
@@ -65,7 +69,7 @@ function playRound(playerSelection, computerSelection) {
       break;
   }
 
-  log.textContent = `You Win! ${capitalize(playerSelection)} beats ${capitalize(computerSelection)}`
+  log.textContent = `You Win this round! ${capitalize(playerSelection)} beats ${capitalize(computerSelection)}`
   scoreboard.push('player')
   checkScore(scoreboard)
   return
@@ -75,4 +79,3 @@ const btnArray = Array.from(document.querySelectorAll('button'))
 btnArray.forEach(btn => {
   btn.addEventListener('click', () => playRound(btn.value, getComputerChoice()))
 })
-
