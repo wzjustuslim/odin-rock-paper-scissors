@@ -4,27 +4,14 @@ function getComputerChoice() {
   return choices[rng]
 }
 
-function getPlayerChoice() {
-  const choices = ['rock', 'paper', 'scissors']
-  while (true) {
-    let choice = prompt('Rock, paper or scissors?')
-    if (choice) {
-      choice = choice.toLowerCase()
-    }
-    if (choices.includes(choice)) {
-      return choice
-    } else {
-      alert('Please make a valid choice!')
-    }
-  }
-}
-
 function capitalize(string) {
   return string[0].toUpperCase() + string.slice(1)
 }
 
 function playRound(playerSelection, computerSelection) {
+  const log = document.getElementById('log')
   if (playerSelection === computerSelection) {
+    log.textContent = "It's a tie!"
     console.log("It's a tie!")
     return 'tie'
   }
@@ -32,6 +19,7 @@ function playRound(playerSelection, computerSelection) {
   switch (playerSelection) {
     case 'rock':
       if (computerSelection === 'paper') {
+        log.textContent = "You Lose! Paper beats Rock"
         console.log("You Lose! Paper beats Rock")
         return 'computer'
       }
@@ -39,6 +27,7 @@ function playRound(playerSelection, computerSelection) {
     
     case 'paper':
       if (computerSelection === 'scissors') {
+        log.textContent = "You Lose! Scissors beats Paper"
         console.log("You Lose! Scissors beats Paper")
         return 'computer'
       }
@@ -46,6 +35,7 @@ function playRound(playerSelection, computerSelection) {
     
     case 'scissors':
       if (computerSelection === 'rock') {
+        log.textContent = "You Lose! Rock beats Scissors"
         console.log("You Lose! Rock beats Scissors")
         return 'computer'
       }
@@ -55,6 +45,7 @@ function playRound(playerSelection, computerSelection) {
       break;
   }
 
+  log.textContent = `You Win! ${capitalize(playerSelection)} beats ${capitalize(computerSelection)}`
   console.log(`You Win! ${capitalize(playerSelection)} beats ${capitalize(computerSelection)}`)
   return 'player'
 }
@@ -89,4 +80,8 @@ function playGame() {
   alert('You somehow broke this game! =(')
 }
 
-playGame()
+const btnArray = Array.from(document.querySelectorAll('button'))
+btnArray.forEach(btn => {
+  btn.addEventListener('click', () => playRound(btn.value, getComputerChoice()))
+})
+
